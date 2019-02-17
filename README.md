@@ -1,2 +1,2 @@
 # matrix
-Matrix calculation in Python
+Matrix maths in Python
