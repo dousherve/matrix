@@ -1,4 +1,4 @@
-from matrix import *
+from matrix import Matrix
 
 a = Matrix(2, 5)
 b = Matrix(5, 3)
@@ -47,5 +47,13 @@ c[1][0] = 7
 c[1][1] = 9
 
 print("det C = {}".format(c.getDeterminant()))
-
 print(c.invert())
+
+A = Matrix(2, 2, 8)
+B = Matrix(2, 2, '1/3')
+
+C = A + B
+print(C)
+
+C **= 2
+print(C)
