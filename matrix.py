@@ -3,9 +3,6 @@ Matrix class
 Louis Dous Hervé - 2019
 """
 
-# Je sais pas pourquoi je code "en anglais" mais je commente en français,
-# alors me demande pas
-
 import os
 import copy
 import numbers
@@ -26,10 +23,11 @@ class Array:
     def __setitem__(self, key, value):
         if key < 0 or key >= self.size:
             raise ValueError("Index {} out of bounds ({} columns)".format(key, self.size))
-        # elif not isinstance(value, numbers.Number):
-        #     raise TypeError("Value should be a number ('{}' is not a number)".format(value))
-        else:
+
+        try:
             self.data[key] = Fraction(str(value))
+        except ValueError:
+            print("Invalid literal for Fraction")
 
 class Matrix:
     
@@ -137,14 +135,8 @@ class Matrix:
     def __mul__(self, other):
         return self.multiply(other)
 
-    # def __imul__(self, other):
-    #     return self.multiplyByConstant(Fraction(str(other)))
-
     def __add__(self, other):
         return self.add(other)
-
-    # def __iadd__(self, other):
-    #     return self.add(other)
 
     def __sub__(self, other):
         return self.add(other * -1)
@@ -154,7 +146,7 @@ class Matrix:
 
     def __pow__(self, other):
         if other < -1:
-            ValueError("Cannot calculate the result of a matrix to that power ({} < -1)")
+            ValueError("Cannot currently raise a matrix to that power ({} < -1)")
 
         if other == -1:
             return self.invert()
