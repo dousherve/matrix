@@ -71,7 +71,7 @@ class Matrix:
     def add(self, m):
         if not type(m) is Matrix:
             raise TypeError("Matrices can only be added with matrices")
-        if m.n != self.n or m.p != self.p:
+        if self.getSize() != m.getSize():
             raise ValueError("Matrices can only be added with same size matrices ({}x{} ; {}x{})".format(self.n, self.p, m.n, m.p))
 
         r = Matrix(self.n, self.p)
@@ -93,6 +93,17 @@ class Matrix:
             raise TypeError("Sorry, but currently, this class is only able to invert 2x2 matrices.")
         else:
             return self.getDeterminant() != 0
+            
+    def isDiagonal(self):
+        if not self.isSquare():
+            return False
+        else:
+            for i in range(self.n):
+                for j in range(self.p):
+                    if i != j and self[i][j] != 0:
+                        return False
+                         
+            return True
 
     def invert(self):
         if self.isInvertible():

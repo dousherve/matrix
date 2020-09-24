@@ -57,3 +57,14 @@ print(C)
 
 C **= 2
 print(C)
+
+D = Matrix(3, 3)
+if D.isDiagonal():
+    print("D is diagonal")
+else:
+    print("D is not diagonal")
+    
+E = Matrix.identity(3)
+
+if D.getSize() == E.getSize():
+    print("D and E are the same size")
